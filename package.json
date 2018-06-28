@@ -1,0 +1,28 @@
+{
+  "name": "sql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "scss":"node-sass scss/main.scss public/main.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevonD123/100days-of-code-w1.git"
+  },
+  "author": "Devon Dunn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevonD123/100days-of-code-w1/issues"
+  },
+  "homepage": "https://github.com/DevonD123/100days-of-code-w1#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "node-sass": "^4.9.0",
+    "nodemon": "^1.17.5",
+    "pg": "^7.4.3"
+  }
+}
