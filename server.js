@@ -85,13 +85,13 @@ app.delete('/todo/:id',(req,res) => {
         })
         .catch(err => res.json(err) )
 })
-app.put('/todo/:id/:bool',(req,res) => {
+app.put('/todo/:id',(req,res) => {
     const client = new Client();
     client.connect()
         .then(() => {
-            const sql = 'UPDATE todos SET completed = $2 WHERE todo_id = $1';
-            //where is veryyyyy important otherwise will do to all
-            const params = [req.params.id,req.params.bool]
+            const sql = 'UPDATE todos SET completed =NOT completed  WHERE todo_id = $1';
+            //where is veryyyyy important otherwise will do to all + NOT will work with postgresql not =!
+            const params = [req.params.id]
             return client.query(sql,params)
         })
         .then(result => {
