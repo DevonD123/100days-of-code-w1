@@ -2,6 +2,7 @@
 instead of using the the normal mongodb with node i decided to do a tutorial on a sql version of a todolist api i created with postgreSQL, nodejs, express and pg(npm package)
 
 read up on client.end() + pools assuming it will save interactions 
+---> doing pools and more client.end on a later date to make the tutorial simplified 
 
 getting server up
 installing postresql get app and move to applications folder -> attempt to open then go to security settings -> general and allow it to open
@@ -13,5 +14,5 @@ had an issue with node making random files that were named the same as whatever 
 
 
 
-
+todo next:----> consume api by react-native app 
 todo next:----> add another table potentially users table with auth and linking
