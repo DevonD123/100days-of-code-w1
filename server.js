@@ -20,9 +20,9 @@ app.get('/todo/:id',(req,res) => {
             return client.query(sql,params);
         })
         .then(result => {
-            res.send(result.rows)
+            res.json(result.rows)
         })
-        .catch(err => res.send(err) )
+        .catch(err => res.json(err) )
 })
 app.get('/todos', (req,res) => {
     //get all todo
@@ -37,7 +37,7 @@ app.get('/todos', (req,res) => {
             res.json(results.rows);
             //if you want to see table id you can use fields
         })
-        .catch(err => console.log(err) ) 
+        .catch(err => res.json(err) ) 
 });
 app.post('/todo', (req,res)=>{
     //add a todo to db
@@ -54,15 +54,14 @@ app.post('/todo', (req,res)=>{
             return client.query(sql, params);
         })
         .then(result => {
-            console.log('added to db');
             client.end();
-            res.send(result);
+            res.json(result);
         })
         .catch(err => {
-             console.log(err);
+             res.json(err);
         })
     //get list
-    //-- redirect in .then to page with list/res.send/json data
+    //-- redirect in .then to page with list/json data
 });
 
 app.delete('/todo/:id',(req,res) => {
@@ -77,10 +76,10 @@ app.delete('/todo/:id',(req,res) => {
         .then(result => {
             if(result.rowCount >=1){
                 console.log(`you have deleted the todo with id: ${req.params.id}`)
-                return res.send(result)
+                return res.json(result)
             }else{
                 console.log(`we could not find the todo with an id of: ${req.params.id}`)
-                return res.send('please try again, we could not find your todo')
+                return res.json('please try again, we could not find your todo')
             }
         })
         .catch(err => res.json(err) )
@@ -95,9 +94,9 @@ app.put('/todo/:id',(req,res) => {
             return client.query(sql,params)
         })
         .then(result => {
-            res.send(result);
+            res.json(result);
         })
-        .catch(err => res.send(err) )
+        .catch(err => res.json(err) )
 })
 
 
