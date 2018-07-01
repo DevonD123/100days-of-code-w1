@@ -5,12 +5,15 @@ const {Client} = require('pg'); //destructuring with es6
 //:NOTE -> requiring without putting it in a var just calling instantly, loads up env file vars instantly
 require('dotenv').config();
 const app = express();
+const router = express.Router();
+const user = require('./Routes/userRoutes');
 
 //:NOTE -> setting up to auto use public dir,if it has index.js it will auto show in root route
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:false}));
 
 /////////// ROUTES ////////////////
+app.use('/user',user);
 app.get('/todo/:id',(req,res) => {
     const client = new Client();
     client.connect()
@@ -98,6 +101,7 @@ app.put('/todo/:id',(req,res) => {
         })
         .catch(err => res.json(err) )
 })
+
 
 
 
